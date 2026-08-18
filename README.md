@@ -12,6 +12,7 @@ app's ImGui color palette is derived from one `baseColor` in `source/application
 bold amber (`#C77800`) — every themed widget (buttons, sliders, frames, text) follows from it.
 
 ![Amber theme screenshot](docs/amber-theme-screenshot.png)
+![Settings menu screenshot](docs/settings-menu-screenshot.png)
 *Built and run headlessly on Linux (Xvfb) to confirm the theme renders correctly.*
 
 The Arabic translation (`resources/translations/ar.json`) is also now complete (163/163 keys). Upstream
