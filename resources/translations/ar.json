@@ -152,5 +152,14 @@
   "Options": "Options",
   "Apply": "Apply",
   "SaveToFile": "Save to file",
-  "SortingOption": "Sorting option"
+  "SortingOption": "Sorting option",
+  "ShareButton": "زر المشاركة",
+  "ShareButtonAsSelect": "زر المشاركة كاختيار",
+  "TouchpadAsSelect": "لوحة اللمس كاختيار",
+  "TouchpadAsStart": "لوحة اللمس كبدء",
+  "CaptureDevice": "جهاز الالتقاط",
+  "UseHotkey": "استخدام الاختصار",
+  "GyroToMouseHotkey": "اختصار جيرو إلى الفارة",
+  "HidHideNotInstalled": "HidHide غير مثبت!",
+  "HidHideInstallLink": "تثبيت HidHide"
 }
