@@ -255,8 +255,6 @@ bool MainWindow::Led(s_scePadSettings &scePadSettings, float scale)
 	if (m_Udp.IsActive())
 		return false;
 
-	ImGui::SeparatorText(cstr("LedSection"));
-
 	ImGui::Checkbox(cstr("DisablePlayerLED"), &scePadSettings.disablePlayerLed);
 	ImGui::Checkbox(cstr("AudioToLED"), &scePadSettings.audioToLed);
 	ImGui::Checkbox(cstr("DiscoMode"), &scePadSettings.discoMode);
@@ -289,8 +287,6 @@ bool MainWindow::Audio(int currentController, s_scePadSettings &scePadSettings)
 {
 	static bool failedToStart = false;
 	int busType = 0;
-
-	ImGui::SeparatorText(cstr("Audio"));
 
 	static bool wasChecked = false;
 	ImGui::Checkbox(cstr("Audio passthrough"), &scePadSettings.audioPassthrough);
@@ -380,8 +376,6 @@ bool MainWindow::AdaptiveTriggers(s_scePadSettings &scePadSettings)
 {
 	if (m_Udp.IsActive())
 		return false;
-
-	ImGui::SeparatorText(cstr("AdaptiveTriggers"));
 
 	if (ImGui::TreeNodeEx(cstr("StaticTriggerSettings")))
 	{
@@ -782,7 +776,6 @@ bool MainWindow::KeyboardAndMouseMapping(s_scePadSettings &scePadSettings, s_Sce
 		}
 	}
 
-	ImGui::SeparatorText(cstr("KeyboardAndMouseMapping"));
 	ImGui::Checkbox(cstr("AnalogWsadEmulation"), &scePadSettings.emulateAnalogWsad);
 
 	ImGui::Checkbox(cstr("GyroToMouse"), &scePadSettings.gyroToMouse);
@@ -815,8 +808,6 @@ bool MainWindow::KeyboardAndMouseMapping(s_scePadSettings &scePadSettings, s_Sce
 
 bool MainWindow::Touchpad(int currentController, s_scePadSettings &scePadSettings, s_ScePadData &state, float scale)
 {
-	ImGui::SeparatorText(cstr("Touchpad"));
-
 	ImGui::Checkbox(cstr("TouchpadToMouse"), &scePadSettings.touchpadAsMouse);
 	if (scePadSettings.touchpadAsMouse)
 	{
@@ -1616,8 +1607,6 @@ bool MainWindow::TreeElement_analogSticks(s_scePadSettings &scePadSettings, s_Sc
 
 bool MainWindow::Emulation(int currentController, s_scePadSettings &scePadSettings, s_ScePadData &state)
 {
-	ImGui::SeparatorText(cstr("EmulationHeader"));
-
 	if (!m_Vigem.IsVigemConnected())
 	{
 #if (!defined(__linux__)) && (!defined(__MACOS__))
@@ -1734,12 +1723,40 @@ void MainWindow::Show(s_scePadSettings scePadSettings[4], float scale)
 	MenuBar(c, scePadSettings[c]);
 	if (Controllers(c, scePadSettings[c], scale))
 	{
-		Emulation(c, scePadSettings[c], state);
-		Led(scePadSettings[c], scale);
-		AdaptiveTriggers(scePadSettings[c]);
-		Audio(c, scePadSettings[c]);
-		Touchpad(c, scePadSettings[c], state, scale);
-		KeyboardAndMouseMapping(scePadSettings[c], state);
+		if (ImGui::BeginTabBar("MainControllerTabs"))
+		{
+			if (ImGui::BeginTabItem(cstr("EmulationHeader")))
+			{
+				Emulation(c, scePadSettings[c], state);
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem(cstr("LedSection")))
+			{
+				Led(scePadSettings[c], scale);
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem(cstr("AdaptiveTriggers")))
+			{
+				AdaptiveTriggers(scePadSettings[c]);
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem(cstr("Audio")))
+			{
+				Audio(c, scePadSettings[c]);
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem(cstr("Touchpad")))
+			{
+				Touchpad(c, scePadSettings[c], state, scale);
+				ImGui::EndTabItem();
+			}
+			if (ImGui::BeginTabItem(cstr("KeyboardAndMouseMapping")))
+			{
+				KeyboardAndMouseMapping(scePadSettings[c], state);
+				ImGui::EndTabItem();
+			}
+			ImGui::EndTabBar();
+		}
 	}
 	Online(scePadSettings[c]);
 
