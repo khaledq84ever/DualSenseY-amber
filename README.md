@@ -11,6 +11,9 @@ app's ImGui color palette is derived from one `baseColor` in `source/application
 (`Application::SetStyleAndColors`), so this fork just changes that default from the upstream purple to a
 bold amber (`#C77800`) — every themed widget (buttons, sliders, frames, text) follows from it.
 
+![Amber theme screenshot](docs/amber-theme-screenshot.png)
+*Built and run headlessly on Linux (Xvfb) to confirm the theme renders correctly.*
+
 > **Note on licensing:** upstream's in-app About dialog states "DualSenseY is licensed under the MIT
 > License," but there's no `LICENSE` file in the repo root (only bundled third-party libraries under
 > `thirdparty/` carry their own licenses). Treat this as source-available rather than formally
