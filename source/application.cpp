@@ -341,7 +341,7 @@ void Application::SetStyleAndColors() {
 	style.ScrollbarSize = 20.0f;
 
 	ImVec4* colors = style.Colors;
-	ImVec4 baseColor = ImVec4(0.369f, 0.075f, 0.929f, 1.0f);
+	ImVec4 baseColor = ImVec4(0.780f, 0.471f, 0.0f, 1.0f);
 
 #ifdef WINDOWS
 	DWORD color = 0;

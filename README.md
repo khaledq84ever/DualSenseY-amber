@@ -3,6 +3,19 @@
 <img src="https://img.shields.io/github/downloads/WujekFoliarz/DualSenseY-v2/total">
 Simple and lightweight program for DualSense and DualShock 4 controllers
 
+## About this amber fork
+
+This fork ([khaledq84ever/DualSenseY-amber](https://github.com/khaledq84ever/DualSenseY-amber)) is a UI
+reskin on top of [WujekFoliarz/DualSenseY-v2](https://github.com/WujekFoliarz/DualSenseY-v2). The whole
+app's ImGui color palette is derived from one `baseColor` in `source/application.cpp`
+(`Application::SetStyleAndColors`), so this fork just changes that default from the upstream purple to a
+bold amber (`#C77800`) — every themed widget (buttons, sliders, frames, text) follows from it.
+
+> **Note on licensing:** upstream's in-app About dialog states "DualSenseY is licensed under the MIT
+> License," but there's no `LICENSE` file in the repo root (only bundled third-party libraries under
+> `thirdparty/` carry their own licenses). Treat this as source-available rather than formally
+> license-cleared until upstream adds one.
+
 
 ## Installation
 
