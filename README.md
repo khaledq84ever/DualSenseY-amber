@@ -14,6 +14,13 @@ bold amber (`#C77800`) — every themed widget (buttons, sliders, frames, text) 
 ![Amber theme screenshot](docs/amber-theme-screenshot.png)
 *Built and run headlessly on Linux (Xvfb) to confirm the theme renders correctly.*
 
+The Arabic translation (`resources/translations/ar.json`) is also now complete (163/163 keys). Upstream
+already had Arabic font/glyph-range support and a `ReverseUTF8` workaround for reading direction (Dear
+ImGui has no text-shaping engine, so letters render in isolated forms rather than joined cursive — a
+pre-existing limitation, not something introduced here):
+
+![Arabic UI screenshot](docs/arabic-screenshot.png)
+
 > **Note on licensing:** upstream's in-app About dialog states "DualSenseY is licensed under the MIT
 > License," but there's no `LICENSE` file in the repo root (only bundled third-party libraries under
 > `thirdparty/` carry their own licenses). Treat this as source-available rather than formally
